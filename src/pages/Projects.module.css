@@ -1,0 +1,19 @@
+.projectsPageContainer{
+  height: 100vh;
+  
+  overflow: hidden;
+}
+
+.projectsBackgroundShape{
+
+  cursor: url("/public/redDot.png");
+  position: absolute;
+  top: 0;
+  right: -10vw;
+
+  background-color: black;
+  width: 70vw; 
+  height: 100vh;
+  transform: skew(-10deg);
+  z-index: -1;
+}

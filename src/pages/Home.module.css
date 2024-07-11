@@ -1,0 +1,12 @@
+
+.backgroundShape {
+  cursor: url("/public/redDot.png");
+  position: absolute;
+  top: 0;
+  left: -20vw;
+  background-color: black;
+  width: 70vw; 
+  height: 100vh;
+  transform: skew(-30deg);
+  z-index: -1;
+}

@@ -1,0 +1,32 @@
+/* App.css */
+
+body {
+  background-color: #FFFF3F;
+  overflow-x: hidden;
+}
+
+
+
+
+
+/* Mobile phones (portrait and landscape) */
+@media only screen and (max-width: 600px) {
+  .background-shape {
+    top: 0;
+    left: -15vw;
+  }
+}
+
+/* Tablets (portrait and landscape) */
+@media only screen and (min-width: 601px) and (max-width: 1100px) {
+  .background-shape {
+    top: 0;
+    left: -20vw;
+  }
+}
+
+/* PCs (laptops and desktops) */
+@media only screen and (min-width: 901px) {
+
+}
+

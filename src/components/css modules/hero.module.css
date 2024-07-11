@@ -1,0 +1,79 @@
+/* hero.module.css */
+
+.upperText{
+  margin-top: 5vh;
+}
+
+.subtext {
+  color: #FFFF3F; /* Default color */
+  mix-blend-mode: difference;
+  font-size: 1rem;
+
+  padding: 10px;
+}
+
+.maintext {
+  color: #FFFF3F; /* Default color */
+  mix-blend-mode: difference;
+  padding: 10px;
+  overflow: hidden;  
+
+  font-size: 8rem;
+  word-spacing: 7rem;
+  white-space:nowrap;
+}
+
+
+.bottomText{
+  position: absolute;
+  bottom: 0;
+}
+
+.bottomSubtext {
+  color: #FFFF3F; /* Default color */
+  mix-blend-mode: difference;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.bottomMaintext {
+  color: #FFFF3F; /* Default color */
+  mix-blend-mode: difference;
+  padding: 10px;
+  overflow: hidden;  
+
+  font-size: 8rem;
+  word-spacing: 6rem;
+  white-space:nowrap;
+}
+
+.heroContainer{
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+.catContainer{
+  position: absolute;
+  right: 0;
+  top: 30vh;
+  .catImg{
+    width: 14rem;
+    object-fit: fill;
+    
+  }
+}
+
+.leftEye{
+  width: 2rem;
+  position: absolute;
+  top: 70px;
+  left: 79px;
+}
+
+.rightEye{
+  width: 2rem;
+  position: absolute;
+  top: 70px;
+  left: 118px;
+}

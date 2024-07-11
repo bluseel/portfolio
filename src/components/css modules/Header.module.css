@@ -1,0 +1,66 @@
+
+@font-face {
+  font-family: 'Roboto-Bold';
+  src: url('../fonts/Roboto-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto-Medium';
+  src: url('../fonts/Roboto-Medium.ttf') format('truetype');
+}
+
+.headerContainer{
+  /* height: 120vh; */
+  font-family: 'Roboto-Medium';
+
+  font-size: 0.9rem;
+}
+
+.yellowTextColor{
+  color: yellow;
+}
+
+
+.blackTextColor{
+  color: black; 
+}
+
+
+.pageList{
+  position:fixed;
+  z-index: 99;
+  top: 10px;
+  right: 10px;
+
+  list-style: none;
+  overflow: hidden;
+  height: 1rem;
+  width: 80px;
+
+  transition: height 0.3s ease; /* Shortened transition duration */
+}
+
+.pageList:hover{
+  height: 90px;
+  /* background-color: red; */
+}
+
+.normalPage{
+  background-color: none;
+  font-family: 'Roboto-Medium';
+  transition: color 0.5s;
+}
+
+
+.normalPage:hover {
+  color: orange; /* Change this to the color you want on hover */
+  cursor: pointer;
+}
+
+
+.currentPage{
+  font-family: 'Roboto-Bold';
+}
+
+
+

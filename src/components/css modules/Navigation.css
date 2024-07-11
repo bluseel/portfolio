@@ -1,0 +1,48 @@
+.navigation {
+  position: relative;
+  margin-right: 20px; /* Adjust spacing as needed */
+}
+
+.current-page {
+  background-color: #f0f0f0; /* Example background color */
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+.current-page:hover {
+  background-color: #e0e0e0; /* Lighter background on hover */
+}
+
+.page-list {
+  position: absolute;
+  top: 100%; /* Position below the current page */
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); /* Example box shadow */
+  padding: 5px;
+  max-height: 200px; /* Example maximum height */
+  overflow-y: auto; /* Enable scrolling if needed */
+  opacity: 0; /* Initially hidden */
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition for opacity and visibility */
+}
+
+.page-item {
+  padding: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+.page-item:hover {
+  background-color: #f0f0f0; /* Lighter background on hover */
+}
+
+.navigation:hover .page-list {
+  opacity: 1; /* Show the list on hover */
+  visibility: visible;
+}

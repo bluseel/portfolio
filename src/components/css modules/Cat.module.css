@@ -1,0 +1,49 @@
+
+.catContainer{
+  position: absolute;
+  .catImg{
+    width: 14rem;
+    object-fit: fill;
+    
+  }
+}
+
+.eyesContainer{
+  position: absolute;
+  display: flex;
+  column-gap: 7px;
+  top: 70px;
+  left: 79px;
+}
+
+.eyesInProjects{
+  transform: rotate(180deg);
+  top: 68px;
+
+}
+
+.eyesInHome{
+  transform: rotate(0deg);
+}
+
+.leftEye{
+
+  width: 2rem;
+}
+
+.rightEye{
+  width: 2rem;
+  
+}
+
+
+.catInHome{
+  right: 0;
+  top: 30vh;
+}
+
+.catInProjects{
+  right: 180vh;
+  top: -40vh;
+  transform: rotate(180deg);
+}
