@@ -13,7 +13,7 @@
     return (
       <>
 
-        {/* <Cat pageName={pageName} setPageName={setPageName}/>
+        <Cat pageName={pageName} setPageName={setPageName}/>
 
         {
           pageName === "Home"?<RedDotCursor/>: <div></div> }
@@ -23,9 +23,9 @@
         {pageName==="Home"? <Home/>:
         pageName==="Projects"? <Projects/>: 
         <div></div>
-        } */}
+        }
         
-        <SingleProject/>
+        {/* <SingleProject/> */}
 
       </>
         

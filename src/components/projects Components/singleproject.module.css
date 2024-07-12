@@ -1,6 +1,10 @@
 .singleProjectContainer{
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+
   height: 100vh;
-  display: flex;
+    display: flex;
   overflow-x: hidden;
 
   scroll-snap-type: x mandatory;
@@ -12,6 +16,7 @@
 .singleProjectContainer{
   display: flex;
   flex-direction: row;
+
 }
 
 @media (max-width: 900px) { /* Tablet */
@@ -32,45 +37,30 @@
 
 
 
-
-/* project info in blue */
-.projectInfo{
-  
-  position: absolute;
-  bottom: 0;
-  padding: 30px;
-  width: 100vw;
-  
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-
-/* written project detail in glass */
+/* this has everyhting inside gray box */
 
 .projectDetail{
-  /* From https://css.glass */
+  cursor: auto;
   
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 40vw;
-  height: 25vh;
-  padding: 20px;
-
-  color: #FFFF3F;
+  width: 45vw;
+  height: 30vh;
+  padding: 10px;
+  color: black;
   ul{
     list-style: none;
     padding-left: 5px;
 
     li{
+      padding-top: 5px;
     }
   }
 
-
-  background: rgba(2, 1, 1, 0.39);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  /* From https://css.glass */
+  background: rgba(217, 215, 215, 0.39);
+  box-shadow: 0 4px 30px rgba(110, 109, 109, 0.1);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   .projectName{
@@ -79,12 +69,25 @@
 }
 
 
+
+/*this has control buttons inside it */
+.projectInfo{
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .controlButtons{
   display: flex;
-  column-gap: 20px;
+  column-gap: 10px;
   align-items: center;
     img{
-    width: 100px;
+    width: 40px;
     background-color:rgba(2, 1, 1, 0.39);
     
   }
@@ -106,6 +109,10 @@
   padding: 10px;
 }
 
+.externalButton{
+  padding: 5px;
+}
+
 /* tablet */
 @media (max-width: 900px) {
   .controlButtons{
@@ -124,3 +131,4 @@
     }
   }
 }
+

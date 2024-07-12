@@ -1,78 +1,53 @@
-import React, { useEffect, useRef } from 'react';
-import task from '/computertasktracker.png';
+import React, { useEffect, useRef, useState } from 'react';
 import stl from './singleproject.module.css';
 import cross from '/cross.svg';
 import externalSvg from '/externalLink.svg';
 
-// Define the project object
-const project = {
-  name: 'Task Tracker',
-  bulletPoints: ['asdf', 'asdf', 'asdpf', 'asdffff'],
-  link: '#', // Add the appropriate link here
-  imageUrls: [
-    '/projectsPhotos/tasktracker/1.png', 
-    '/projectsPhotos/tasktracker/2.png', 
-    '/projectsPhotos/tasktracker/3.png', 
-    '/projectsPhotos/tasktracker/4.png', 
-    '/projectsPhotos/tasktracker/5.png', 
-    '/projectsPhotos/tasktracker/6.png', 
-    '/projectsPhotos/tasktracker/7.png', 
+const SingleProject = ({ project, onClose }) => {
+  const containerRef = useRef(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  ], // Add other image URLs as needed
-};
-
-const SingleProject: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const proximityThreshold = 600; // Adjust this value as needed
-
-  const handleMouseMove = (e: MouseEvent) => {
+  const handleMouseMove = (e) => {
     if (containerRef.current) {
-      const { clientX, clientY, currentTarget } = e;
-      const { offsetWidth, offsetLeft, offsetTop } = currentTarget as HTMLDivElement;
+      const { clientX, currentTarget } = e;
+      const { offsetWidth, offsetLeft } = currentTarget;
       const middleX = offsetLeft + offsetWidth / 2;
-      const elements = containerRef.current.children;
 
       let cursorStyle = 'auto';
 
-      // Check proximity to elements
-      for (let i = 0; i < elements.length; i++) {
-        const rect = (elements[i] as HTMLElement).getBoundingClientRect();
-        const isNearElement =
-          clientX > rect.left - proximityThreshold &&
-          clientX < rect.right + proximityThreshold &&
-          clientY > rect.top - proximityThreshold &&
-          clientY < rect.bottom + proximityThreshold;
-
-        if (isNearElement) {
-          cursorStyle = 'auto';
-          break;
-        }
-      }
-
-      // If not near any element, set the custom cursor based on position
-      if (cursorStyle === 'auto') {
-        if (clientX < middleX) {
-          cursorStyle = 'url(/left-arrow.png), auto';
-        } else {
-          cursorStyle = 'url(/right-arrow.png), auto';
-        }
+      if (clientX < middleX) {
+        cursorStyle = 'url(/left-arrow.png), auto';
+      } else {
+        cursorStyle = 'url(/right-arrow.png), auto';
       }
 
       containerRef.current.style.cursor = cursorStyle;
     }
   };
 
-  const handleClick = (e: MouseEvent) => {
+  const handleClick = (e) => {
     if (containerRef.current) {
       const { clientX, currentTarget } = e;
-      const { offsetWidth, offsetLeft } = currentTarget as HTMLDivElement;
+      const { offsetWidth, offsetLeft } = currentTarget;
       const middleX = offsetLeft + offsetWidth / 2;
       const scrollAmount = offsetWidth / 2;
 
       if (clientX < middleX) {
-        containerRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        if (currentIndex === 0) {
+          containerRef.current.scrollTo({ left: containerRef.current.scrollWidth, behavior: 'smooth' });
+          setCurrentIndex(project.imageUrls.length - 1);
+        } else {
+          containerRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+          setCurrentIndex(currentIndex - 1);
+        }
       } else {
-        containerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        if (currentIndex === project.imageUrls.length - 1) {
+          containerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+          setCurrentIndex(0);
+        } else {
+          containerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+          setCurrentIndex(currentIndex + 1);
+        }
       }
     }
   };
@@ -87,21 +62,14 @@ const SingleProject: React.FC = () => {
         container.removeEventListener('click', handleClick);
       };
     }
-  }, []);
+  }, [currentIndex]);
 
   return (
     <div className={stl.singleProjectContainer} ref={containerRef}>
       {project.imageUrls.map((url, index) => (
         <img key={index} src={url} className={stl.projectPicture} alt="Task" />
       ))}
-      <div className={stl.projectInfo}>
-        <div className={stl.controlButtons}>
-          <img src={cross} alt="Close" className={stl.crossButton} />
-          <a href={project.link} target="_blank" rel="noopener noreferrer">
-            <img src={externalSvg} alt="External Link" className={stl.externalButton} />
-          </a>
-        </div>
-      </div>
+     
       <div className={stl.projectDetail}>
         <div className={stl.projectName}>{project.name}</div>
         <div className={stl.projectdescription}>
@@ -110,6 +78,15 @@ const SingleProject: React.FC = () => {
               <li key={index}>{point}</li>
             ))}
           </ul>
+        </div>
+
+        <div className={stl.projectInfo}>
+          <div className={stl.controlButtons}>
+            <img src={cross} alt="Close" className={stl.crossButton} onClick={onClose} />
+            <a href={project.link} target="_blank" rel="noopener noreferrer">
+              <img src={externalSvg} alt="External Link" className={stl.externalButton} />
+            </a>
+          </div>
         </div>
       </div>
     </div>

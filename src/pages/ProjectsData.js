@@ -3,60 +3,46 @@
 const ProjectsData = [
   {
     id: 1,
-    name: "Task Tracker",
-    url: "",
-    reviews: [
-      {
-        id: 11,
-        personName: "Ahamad",
-        occupation: "Founder of Task Tracker",
-        description: "Loved working with you"
-      },
-      {
-        id: 12,
-        personName: "John Doe",
-        occupation: "Project Manager",
-        description: "Great experience and collaboration"
-      }
+    name: 'Task Tracker',
+    bulletPoints: [
+      'Made in MERN (MongoDB, ExpressJS, React, NodeJS)', 
+      'This is a personal project to help students at my university', 
+      'Class representatives can create, update, and delete tasks and courses', 
+      'Students in each section can view them freely'],
+    link: '#', 
+    imageUrls: [
+      '/projectsPhotos/tasktracker/1.png', 
+      '/projectsPhotos/tasktracker/2.png', 
+      '/projectsPhotos/tasktracker/3.png', 
+      '/projectsPhotos/tasktracker/4.png', 
+      '/projectsPhotos/tasktracker/5.png', 
+      '/projectsPhotos/tasktracker/6.png', 
+      '/projectsPhotos/tasktracker/7.png',
     ]
   },
+
+
+
   {
     id: 2,
-    name: "Budget App",
-    url: "",
-    reviews: [
-      {
-        id: 21,
-        personName: "Sarah Lee",
-        occupation: "Finance Manager",
-        description: "Very useful app for budgeting"
-      },
-      {
-        id: 22,
-        personName: "Mike Smith",
-        occupation: "Developer",
-        description: "Impressive functionality and design"
-      }
-    ]
-  },
-  {
-    id: 3,
-    name: "Fitness Tracker",
-    url: "",
-    reviews: [
-      {
-        id: 31,
-        personName: "Emily Clark",
-        occupation: "Fitness Coach",
-        description: "Excellent tool for tracking workouts"
-      },
-      {
-        id: 32,
-        personName: "David Brown",
-        occupation: "Health Enthusiast",
-        description: "Helps me stay motivated"
-      }
-    ]
+    name: 'Skyline Website',
+  bulletPoints: [
+    'Allows students to get admission online',
+    'All devices responsive',
+    'Made in pure CSS , HTML, JavaScript', 
+    'This was my first project'], 
+  link: '#', 
+  imageUrls: [
+    '/projectsPhotos/skyline/1.png', 
+    '/projectsPhotos/skyline/2.png', 
+    '/projectsPhotos/skyline/3.png', 
+    '/projectsPhotos/skyline/4.png', 
+    '/projectsPhotos/skyline/5.png', 
+    '/projectsPhotos/skyline/6.png', 
+    '/projectsPhotos/skyline/7.png',
+    '/projectsPhotos/skyline/8.png',
+  ],
+
   }
 ];
 
