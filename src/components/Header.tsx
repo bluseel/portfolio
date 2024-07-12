@@ -47,8 +47,8 @@ const Header = ({pageName, setPageName}) => {
     }
     if (pageName === "Projects"){
       if (headerElem){
-        headerElem.classList.add(stl.yellowTextColor);
-        headerElem.classList.remove(stl.blackTextColor);
+          // headerElem.classList.add(stl.yellowTextColor);
+          // headerElem.classList.remove(stl.blackTextColor);
 
       }
     }

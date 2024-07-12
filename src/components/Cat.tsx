@@ -54,9 +54,6 @@ useEffect(() => {
       catElement.classList.add(stl.catInProjects);
       catElement.classList.remove(stl.catInHome);
 
-      catEyes?.classList.add(stl.eyesInProjects);
-      catElement.classList.remove(stl.eyesInHome);
-
     }
   }
 }, [pageName]);

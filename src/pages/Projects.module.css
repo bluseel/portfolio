@@ -1,19 +1,65 @@
 .projectsPageContainer{
-  height: 100vh;
-  
   overflow: hidden;
+  cursor: auto;
 }
 
-.projectsBackgroundShape{
-
-  cursor: url("/public/redDot.png");
-  position: absolute;
-  top: 0;
-  right: -10vw;
-
-  background-color: black;
-  width: 70vw; 
+.projectNamesContainer{
+  position: relative;
   height: 100vh;
-  transform: skew(-10deg);
-  z-index: -1;
+  overflow-Y: hidden;
+
+  z-index: 5;
+  ul{
+
+    display: flex;
+    flex-direction: column;
+    li{border-top: 2px solid black;}
+    
+  }
+  li{
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px;
+    
+    transition: -webkit-text-fill-color 2s ease;
+  }
+  li:hover{
+    cursor: pointer;
+    -webkit-text-fill-color: black;
+
+    transition: color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out;
+  }
+  ul:last-child{
+    border-bottom: 2px solid black;
+  }
+
+  font-size: 4rem;
+}
+
+
+
+
+/* project review and description */
+.projectReviewNDescription{
+  transform: skew(10deg);
+
+  position: absolute;
+  bottom: 0;
+  left: 30vw;
+  width: 100%;
+
+  display: flex;
+  column-gap: 20px;
+
+  img{
+    width: 20px;
+    height: 20px;
+  }
+}
+.projectDescription{
+
+  left: 100px;
+}
+
+.projectReviews{
 }

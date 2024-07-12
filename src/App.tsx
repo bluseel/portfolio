@@ -1,13 +1,11 @@
   import { useState } from 'react'
-  import reactLogo from './assets/react.svg'
-  import viteLogo from '/vite.svg'
   import './App.css'
-  import Hero from './components/Hero'
   import Header from './components/Header'
   import RedDotCursor from './components/RedDotCursor'
   import Home from './pages/Home'
   import Projects from './pages/Projects'
   import Cat from "./components/Cat"
+  import SingleProject from './components/projects Components/SingleProject'
 
   function App() {
     const [pageName, setPageName] = useState("Home")
@@ -15,15 +13,19 @@
     return (
       <>
 
-        <Cat pageName={pageName} setPageName={setPageName}/>
+        {/* <Cat pageName={pageName} setPageName={setPageName}/>
 
-        <RedDotCursor/>
+        {
+          pageName === "Home"?<RedDotCursor/>: <div></div> }
+        
         
         <Header pageName={pageName} setPageName={setPageName}/>  
         {pageName==="Home"? <Home/>:
         pageName==="Projects"? <Projects/>: 
         <div></div>
-        }
+        } */}
+        
+        <SingleProject/>
 
       </>
         

@@ -43,7 +43,6 @@
 }
 
 .catInProjects{
-  right: 180vh;
-  top: -40vh;
-  transform: rotate(180deg);
+  right: 0vw;
+  bottom: -40vh;
 }

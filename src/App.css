@@ -2,7 +2,8 @@
 
 body {
   background-color: #FFFF3F;
-  overflow-x: hidden;
+  /* BECAUSE PROJECTS WAS OVERFLOWING DUE TO CAT */
+  overflow-Y: hidden;
 }
 
 

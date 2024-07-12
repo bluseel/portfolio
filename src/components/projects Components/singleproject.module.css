@@ -1,0 +1,126 @@
+.singleProjectContainer{
+  height: 100vh;
+  display: flex;
+  overflow-x: hidden;
+
+  scroll-snap-type: x mandatory;
+  scroll-snap-stop: always;
+}
+
+
+
+.singleProjectContainer{
+  display: flex;
+  flex-direction: row;
+}
+
+@media (max-width: 900px) { /* Tablet */
+  .singleProjectContainer{
+    flex-wrap: wrap;
+  }
+  .projectPicture {
+    width: 50%; /* Half of the container width */
+  }
+
+}
+
+.projectPicture{
+  width: 100%;
+  scroll-snap-align: start;
+}
+
+
+
+
+
+/* project info in blue */
+.projectInfo{
+  
+  position: absolute;
+  bottom: 0;
+  padding: 30px;
+  width: 100vw;
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+/* written project detail in glass */
+
+.projectDetail{
+  /* From https://css.glass */
+  
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 40vw;
+  height: 25vh;
+  padding: 20px;
+
+  color: #FFFF3F;
+  ul{
+    list-style: none;
+    padding-left: 5px;
+
+    li{
+    }
+  }
+
+
+  background: rgba(2, 1, 1, 0.39);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  .projectName{
+    font-size: 2rem;
+  }
+}
+
+
+.controlButtons{
+  display: flex;
+  column-gap: 20px;
+  align-items: center;
+    img{
+    width: 100px;
+    background-color:rgba(2, 1, 1, 0.39);
+    
+  }
+
+  img:hover{
+    background-color:rgba(2, 1, 1, 0.171);
+    
+    
+    cursor: pointer;
+  }
+  img:active{
+    background-color:rgba(2, 1, 1, 0.587);
+    
+    cursor: pointer;
+  }
+}
+
+.crossButton{
+  padding: 10px;
+}
+
+/* tablet */
+@media (max-width: 900px) {
+  .controlButtons{
+    img{
+      width: 70px;
+    }
+  }
+}
+
+
+/*phone  */
+@media (max-width: 700px) {
+  .controlButtons{
+    img{
+      width: 40px;
+    }
+  }
+}
