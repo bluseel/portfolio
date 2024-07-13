@@ -1,13 +1,23 @@
 import React, { useState } from 'react';
-import { CSSTransition } from 'react-transition-group'; // Import CSSTransition
 import stl from "./Projects.module.css";
-import ProjectsData from "./ProjectsData.js";
+import ProjectsData from "./ProjectsData.json";
 import SingleProject from '../components/projects Components/SingleProject.js';
 
-const Projects = () => {
-  const [selectedProject, setSelectedProject] = useState(null);
+// Project type based on JSON structure
+interface Project {
+  id: number;
+  name: string;
+  bulletPoints: string[];
+  link: string;
+  imageUrls: string[];
+}
 
-  const handleProjectClick = (project) => {
+
+const Projects:  React.FC = () => {
+  // <Project | null>: this shows that it can be either project or null 
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  const handleProjectClick = (project:Project) => {
     setSelectedProject(project);
   };
 
@@ -17,30 +27,23 @@ const Projects = () => {
 
   return (
     <div className={stl.projectsPageContainer}>
-      <CSSTransition
-        in={selectedProject !== null}
-        timeout={500}
-        classNames="slide"
-        unmountOnExit
-      >
-        {selectedProject ? (
-          <SingleProject project={selectedProject} onClose={handleCloseProject} />
-        ) : (
-          <div className={stl.projectNamesContainer}>
-            <ul>
-              {ProjectsData.map(project => (
-                <li
-                  key={project.id}
-                  className={stl.inListProjectName}
-                  onClick={() => handleProjectClick(project)}
-                >
-                  {project.name}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </CSSTransition>
+      {selectedProject ? (
+        <SingleProject project={selectedProject} onClose={handleCloseProject} />
+      ) : (
+        <div className={stl.projectNamesContainer}>
+          <ul>
+            {ProjectsData.map(project => (
+              <li
+                key={project.id}
+                className={stl.inListProjectName}
+                onClick={() => handleProjectClick(project)}
+              >
+                {project.name}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

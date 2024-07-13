@@ -1,13 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, Dispatch, SetStateAction} from 'react'
 import stl from "./css modules/Header.module.css";
 
-const Header = ({pageName, setPageName}) => {
+interface HeaderProps {
+  pageName: string;
+  setPageName: Dispatch<SetStateAction<string>>;
+}
+
+const Header: React.FC<HeaderProps> = ({pageName, setPageName}) => {
   
   const pages = ["Home", "Projects", "Blog", "About Me", "Contract"]
   const allPages = [""]
 
-  function handlePageChange(e){
-    setPageName(e.target.innerText)
+  function handlePageChange(e: React.MouseEvent<HTMLLIElement>){
+    const target = e.currentTarget as HTMLLIElement;
+    setPageName(target.innerText);
   }
 
 

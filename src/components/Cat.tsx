@@ -1,30 +1,41 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import stl from "./css modules/Cat.module.css"
 import cat from "/cat.png"
 import eye from "/eye.png"
 
+interface CatProps {
+  pageName: string;
+}
 
-const Cat = ({pageName, setPageName}) => {
+
+const Cat: React.FC<CatProps> = ({ pageName })  => {
   document.addEventListener('mousemove', (e)=>{
     const mouseX = e.clientX;
     const mouseY = e.clientY;
     
     const anchor = document.getElementById('anchor') ;
+    const leftEye = document.getElementById('leftEye');
+    const rightEye= document.getElementById('rightEye');
+
+    if (!anchor || !leftEye || !rightEye) {
+      return
+    }
     const rekt = anchor.getBoundingClientRect();
     const anchorX = rekt.left + rekt.width/2;
     const anchorY = rekt.top + rekt.height/2;
     
     const angleDeg = angle(mouseX, mouseY, anchorX, anchorY);
     
-    const leftEye = document.getElementById('leftEye');
-    const rightEye= document.getElementById('rightEye');
+    
+
+    
     
     leftEye.style.transform = `rotate(${90+angleDeg}deg)`;
     rightEye.style.transform = `rotate(${90+angleDeg}deg)`;
     
   })
 
-  function angle (cx, cy, ex, ey){
+  function angle (cx: number, cy: number, ex: number, ey: number){
     const dy =  ey - cy;
     const dx =  ex - cx;
     const rad = Math.atan2(dy,dx);

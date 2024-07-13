@@ -1,12 +1,12 @@
 // CursorComponent.jsx
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './css modules/RedDotCursor.module.css'; // Import CSS module for styling
 
 const RedDotCursor = () => {
     const [cursorPosition, setCursorPosition] = useState({ x: -100, y: -100 });
-
-    const handleMouseMove = (e) => {
+ 
+    const handleMouseMove = (e:React.MouseEvent<HTMLDivElement>) => {
         setCursorPosition({ x: e.pageX, y: e.pageY });
     };
 
@@ -15,7 +15,7 @@ const RedDotCursor = () => {
             <ul className={styles.navLinks}>
                 <div className={styles.cursor} style={{ transform: `translate(${cursorPosition.x}px, ${cursorPosition.y}px)` }}></div>
             </ul>
-        </div>
+        </div> 
     );
 };
 

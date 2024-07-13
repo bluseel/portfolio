@@ -1,6 +1,4 @@
-import React from 'react';
 import stl from "./css modules/hero.module.css";
-import Cat from './Cat';
 
 const Hero = () => {
   return (

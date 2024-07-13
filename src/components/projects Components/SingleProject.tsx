@@ -1,16 +1,27 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import stl from './singleproject.module.css';
 import cross from '/cross.svg';
 import externalSvg from '/externalLink.svg';
 
-const SingleProject = ({ project, onClose }) => {
-  const containerRef = useRef(null);
+interface SingleProjectProps {
+  project: {
+    id: number;
+    name: string;
+    bulletPoints: string[];
+    link: string;
+    imageUrls: string[];
+  };
+  onClose: () => void;
+}
+
+const SingleProject: React.FC<SingleProjectProps> = ({ project, onClose }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: MouseEvent) => {
     if (containerRef.current) {
       const { clientX, currentTarget } = e;
-      const { offsetWidth, offsetLeft } = currentTarget;
+      const { offsetWidth, offsetLeft } = currentTarget as HTMLDivElement;
       const middleX = offsetLeft + offsetWidth / 2;
 
       let cursorStyle = 'auto';
@@ -25,10 +36,10 @@ const SingleProject = ({ project, onClose }) => {
     }
   };
 
-  const handleClick = (e) => {
+  const handleClick = (e: MouseEvent) => {
     if (containerRef.current) {
       const { clientX, currentTarget } = e;
-      const { offsetWidth, offsetLeft } = currentTarget;
+      const { offsetWidth, offsetLeft } = currentTarget as HTMLDivElement;
       const middleX = offsetLeft + offsetWidth / 2;
       const scrollAmount = offsetWidth / 2;
 

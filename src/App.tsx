@@ -5,7 +5,6 @@
   import Home from './pages/Home'
   import Projects from './pages/Projects'
   import Cat from "./components/Cat"
-  import SingleProject from './components/projects Components/SingleProject'
 
   function App() {
     const [pageName, setPageName] = useState("Home")
@@ -13,7 +12,7 @@
     return (
       <>
 
-        <Cat pageName={pageName} setPageName={setPageName}/>
+        <Cat pageName={pageName}/>
 
         {
           pageName === "Home"?<RedDotCursor/>: <div></div> }
