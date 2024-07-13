@@ -10,7 +10,7 @@
     const [pageName, setPageName] = useState("Home")
 
     return (
-      <>
+      <div>
 
         <Cat pageName={pageName}/>
 
@@ -26,7 +26,7 @@
         
         {/* <SingleProject/> */}
 
-      </>
+      </div>
         
     )
   }
