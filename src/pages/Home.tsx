@@ -5,13 +5,12 @@ import stl from "./Home.module.css"
 
 const Home = () => {
   return (
-    <>
+    <div className={stl.homeContainer}>
     <div className={stl.backgroundShape}>
-      <img src="vite.svg" alt="" />
     </div>
 
     <Hero/>
-  </>
+  </div>
   )
 }
 

@@ -3,7 +3,8 @@
 body {
   background-color: #FFFF3F;
   /* BECAUSE PROJECTS WAS OVERFLOWING DUE TO CAT */
-  overflow-Y: hidden;
+  overflow: hidden;
+  
 }
 
 
@@ -31,3 +32,9 @@ body {
 
 }
 
+.splineContainer{
+  cursor: pointer;
+  position: absolute;
+  bottom: 100vh;
+  z-index: 10;
+}

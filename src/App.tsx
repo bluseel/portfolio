@@ -1,34 +1,51 @@
-  import { useState } from 'react'
-  import './App.css'
-  import Header from './components/Header'
-  import RedDotCursor from './components/RedDotCursor'
-  import Home from './pages/Home'
-  import Projects from './pages/Projects'
-  import Cat from "./components/Cat"
+import { useState, useEffect } from 'react';
+import './App.css';
+import Header from './components/Header';
+import Home from './pages/Home';
+import Projects from './pages/Projects';
+import Contact from './pages/Contact.tsx';
 
-  function App() {
-    const [pageName, setPageName] = useState("Home")
+import Cat from "./components/Cat";
+import Sphere from './components/home components/Sphere.tsx';
 
-    return (
-      <div>
+function App() {
+  const [pageName, setPageName] = useState("Home");
 
-        <Cat pageName={pageName}/>
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "https://unpkg.com/@splinetool/viewer@1.9.0/build/spline-viewer.js";
+    script.type = "module";
+    document.body.appendChild(script);
+  }, []);
 
-        {
-          pageName === "Home"?<RedDotCursor/>: <div></div> }
-        
-        
-        <Header pageName={pageName} setPageName={setPageName}/>  
-        {pageName==="Home"? <Home/>:
-        pageName==="Projects"? <Projects/>: 
-        <div></div>
-        }
-        
-        {/* <SingleProject/> */}
+  return (
+    <div>
+      <Cat pageName={pageName} />
 
-      </div>
-        
-    )
-  }
 
-  export default App
+      <Header pageName={pageName} setPageName={setPageName} />
+      
+      {pageName === "Home" ? (
+        <>
+          <Home />
+          <Sphere/>
+          <div className="spl ineContainer">
+          
+            <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.0/build/spline-viewer.js"></script>
+            <spline-viewer url="https://prod.spline.design/ohpiEp6lcitxd58S/scene.splinecode"></spline-viewer>
+          
+          </div>
+        </>
+      ) : pageName === "Projects" ? (
+        <Projects />
+      ) : pageName === "Contact" ? (
+        <Contact />
+      ) : <div></div> 
+      }
+
+      {/* <SingleProject/> */}
+    </div>
+  );
+}
+
+export default App;

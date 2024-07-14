@@ -38,8 +38,13 @@
 
 
 .catInHome{
-  right: 0;
-  top: 30vh;
+  right: 0vw;
+  bottom: 100vh;
+}
+
+.catInContact{
+  right: 6vw;
+  bottom: -40vh;
 }
 
 .catInProjects{

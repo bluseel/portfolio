@@ -1,0 +1,31 @@
+/* ThreeScene.module.css */
+:global(body, html) {
+  overflow-x: hidden;
+}
+
+:global(*) {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.sphereContainer{
+  position: absolute;
+  z-index: 0;
+  top: 40vh;
+
+  right: 2vw;
+  margin-right: 20px;
+
+  text-align: center;
+
+}
+
+.webgl {
+  display: block;
+}
+
+.title {
+  font-size: 1rem;
+  color: #FFFF3F;
+}

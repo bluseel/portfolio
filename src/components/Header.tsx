@@ -8,7 +8,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({pageName, setPageName}) => {
   
-  const pages = ["Home", "Projects", "Blog", "About Me", "Contract"]
+  const pages = ["Home", "Projects", "Blog", "About Me", "Contact"]
   const allPages = [""]
 
   function handlePageChange(e: React.MouseEvent<HTMLLIElement>){
@@ -46,16 +46,15 @@ const Header: React.FC<HeaderProps> = ({pageName, setPageName}) => {
     const headerElem = document.querySelector(`.${stl.headerContainer}`);
     if (pageName === "Home"){
       if (headerElem){
-        headerElem.classList.add(stl.blackTextColor);
-        headerElem.classList.remove(stl.yellowTextColor);
+        headerElem.classList.remove(stl.blackTextColor);
+        headerElem.classList.add(stl.yellowTextColor);
 
       }
     }
-    if (pageName === "Projects"){
+    if (pageName === "Projects" || pageName === "Contact" ){
       if (headerElem){
-          // headerElem.classList.add(stl.yellowTextColor);
-          // headerElem.classList.remove(stl.blackTextColor);
-
+          headerElem.classList.remove(stl.yellowTextColor);
+          headerElem.classList.add(stl.blackTextColor);
       }
     }
 

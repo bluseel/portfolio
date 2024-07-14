@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import stl from "./Projects.module.css";
 import ProjectsData from "./ProjectsData.json";
-import SingleProject from '../components/projects Components/SingleProject.js';
+import SingleProject from '../components/projects Components/SingleProject';
 
-// Project type based on JSON structure
 interface Project {
   id: number;
   name: string;
@@ -12,12 +12,10 @@ interface Project {
   imageUrls: string[];
 }
 
-
-const Projects:  React.FC = () => {
-  // <Project | null>: this shows that it can be either project or null 
+const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const handleProjectClick = (project:Project) => {
+  const handleProjectClick = (project: Project) => {
     setSelectedProject(project);
   };
 
@@ -27,23 +25,47 @@ const Projects:  React.FC = () => {
 
   return (
     <div className={stl.projectsPageContainer}>
-      {selectedProject ? (
-        <SingleProject project={selectedProject} onClose={handleCloseProject} />
-      ) : (
-        <div className={stl.projectNamesContainer}>
-          <ul>
-            {ProjectsData.map(project => (
-              <li
-                key={project.id}
-                className={stl.inListProjectName}
-                onClick={() => handleProjectClick(project)}
-              >
-                {project.name}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <TransitionGroup>
+        {selectedProject ? (
+          <CSSTransition
+            key="singleProject"
+            timeout={300}
+            classNames={{
+              enter: stl.enter,
+              enterActive: stl.enterActive,
+              exit: stl.exit,
+              exitActive: stl.exitActive,
+            }}
+          >
+            <SingleProject project={selectedProject} onClose={handleCloseProject} />
+          </CSSTransition>
+        ) : (
+          <CSSTransition
+            key="projectList"
+            timeout={300}
+            classNames={{
+              enter: stl.enter,
+              enterActive: stl.enterActive,
+              exit: stl.exit,
+              exitActive: stl.exitActive,
+            }}
+          >
+            <div className={stl.projectNamesContainer}>
+              <ul>
+                {ProjectsData.map(project => (
+                  <li
+                    key={project.id}
+                    className={stl.inListProjectName}
+                    onClick={() => handleProjectClick(project)}
+                  >
+                    {project.name}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </CSSTransition>
+        )}
+      </TransitionGroup>
     </div>
   );
 };

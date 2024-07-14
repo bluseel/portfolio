@@ -4,13 +4,12 @@
   user-select: none; /* Standard syntax */
 
   height: 100vh;
-    display: flex;
+  display: flex;
   overflow-x: hidden;
 
   scroll-snap-type: x mandatory;
   scroll-snap-stop: always;
 }
-
 
 
 .singleProjectContainer{

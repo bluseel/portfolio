@@ -1,19 +1,25 @@
 .projectsPageContainer{
-  overflow: hidden;
+  overflow-x: hidden;
   cursor: auto;
 }
 
 .projectNamesContainer{
   position: relative;
   height: 100vh;
-  overflow-Y: hidden;
+  overflow-y: scroll;
+
 
   z-index: 5;
   ul{
 
+
     display: flex;
     flex-direction: column;
-    li{border-top: 2px solid black;}
+    li{
+    padding: 0px 10px;  
+
+      border-top: 2px solid black;}
+
     
   }
   li{
@@ -62,5 +68,34 @@
 }
 
 
+/* transition */
 
 
+.projectNamesContainer,
+.singleProjectContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.enterActive {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.exitActive {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 300ms, transform 300ms;
+}

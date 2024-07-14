@@ -8,7 +8,7 @@
       "Class representatives can create, update, and delete tasks and courses",
       "Students in each section can view them freely"
     ],
-    "link": "#",
+    "link": "https://tasktracker0.netlify.app/",
     "imageUrls": [
       "/projectsPhotos/tasktracker/1.png",
       "/projectsPhotos/tasktracker/2.png",
@@ -28,7 +28,7 @@
       "Made in pure CSS , HTML, JavaScript",
       "This was my first project"
     ],
-    "link": "#",
+    "link": "https://bluseel.github.io/skyline-website/",
     "imageUrls": [
       "/projectsPhotos/skyline/1.png",
       "/projectsPhotos/skyline/2.png",

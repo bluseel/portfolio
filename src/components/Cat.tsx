@@ -54,6 +54,14 @@ useEffect(() => {
     if (catElement) {
       catElement.classList.add(stl.catInHome);
       catElement.classList.remove(stl.catInProjects);
+      catElement.classList.remove(stl.catInContact);
+      
+    }
+  }
+  if (pageName === "Contact") {
+    if (catElement) {
+      catElement.classList.add(stl.catInContact);
+      catElement.classList.remove(stl.catInProjects);
       
       catElement.classList.add(stl.eyesInHome);
       catEyes?.classList.remove(stl.eyesInProjects);

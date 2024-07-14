@@ -1,0 +1,135 @@
+.contactContainer{  
+  display: flex;
+  text-align: center;
+  
+}
+
+.formSection{
+  flex: 3;
+  color: #FFFF3F;
+  padding: 50px;
+  background-color: black;
+  height: 100svh;
+
+  .title{   
+    font-size: 5rem;
+    font-weight: bold;
+    margin-bottom: 0.4em;
+    letter-spacing: 2rem;
+  }
+}
+
+
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.formContainer div {
+  margin-bottom: 1em;
+}
+
+.formContainer label {
+  display: block;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+
+.formContainer input,
+.formContainer textarea {
+  width: 100%;
+  height: 8svh;
+  font-size: 1.5rem;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  outline: none;
+  
+}
+
+.formContainer textarea {
+  resize: vertical;
+  height: 23svh;
+}
+
+.formContainer button {
+  padding: 0.3em 1em;
+  background-color: #FFFF3F;
+  color: black;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5em;
+  width: 100%;
+}
+
+.formContainer button:hover {
+  background-color: #fefe83;
+}
+
+.error {
+  color: red;
+  font-size: 0.875em;
+  margin-top: 0.5em;
+}
+
+
+
+
+
+
+
+
+/* -----------------------------  links part ----------------------------- */
+.linksSection {
+  flex: 1;
+  padding: 50px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
+  .title{   
+    font-size: 5rem;
+    
+    font-weight: bold;
+    margin-bottom: 0.4em;
+  }
+
+
+  .linksContainer{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 10px;
+
+    width: 150px;
+
+  }
+
+  /* simple rounded image */
+  .imageContainer{
+    width: 70px;
+    height: 70px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img{
+      width: 70%;
+      height: 70%;
+      object-fit: contain;
+
+      filter: grayscale(100%);
+      transition: filter 0.25s ease;
+    }
+    img:hover {
+      filter: grayscale(0%);
+      cursor: pointer;
+    }
+  }
+
+}
