@@ -7,6 +7,7 @@ import Contact from './pages/Contact.tsx';
 
 import Cat from "./components/Cat";
 import Sphere from './components/home components/Sphere.tsx';
+import AboutMe from './pages/AboutMe.tsx';
 
 function App() {
   const [pageName, setPageName] = useState("Home");
@@ -29,18 +30,15 @@ function App() {
         <>
           <Home />
           <Sphere/>
-          <div className="spl ineContainer">
-          
-            <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.0/build/spline-viewer.js"></script>
-            <spline-viewer url="https://prod.spline.design/ohpiEp6lcitxd58S/scene.splinecode"></spline-viewer>
-          
-          </div>
         </>
       ) : pageName === "Projects" ? (
         <Projects />
       ) : pageName === "Contact" ? (
         <Contact />
-      ) : <div></div> 
+      ) : pageName === "About Me" ? (
+        <AboutMe />
+      )       
+      : <div></div> 
       }
 
       {/* <SingleProject/> */}

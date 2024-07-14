@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import stl from './Contact.module.css';
-import fb from '/contact/fb.png'
-import twitter from '/contact/twitter.png'
-import github from '/contact/github.png'
-import ln from '/contact/ln.png'
-import whatsapp from '/contact/whatsapp.png'
-import gmail from '/contact/gmail.png'
+import fb from '/contact/fb.png';
+import twitter from '/contact/twitter.png';
+import github from '/contact/github.png';
+import ln from '/contact/ln.png';
+import whatsapp from '/contact/whatsapp.png';
+import gmail from '/contact/gmail.png';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -68,7 +68,10 @@ const Contact = () => {
     }
 
     // Set the message indicating functionality is under development
-    setSubmitMessage('This functionality is under working, till then contact me via socials apps');
+    setSubmitMessage('Confirm reCAPTCHA and return to original site');
+
+    // If there are no errors, submit the form manually
+    document.getElementById('contactForm').submit();
   };
 
   return (
@@ -76,13 +79,13 @@ const Contact = () => {
       <div className={stl.formSection}>
         <div className={stl.title}>CONTACT</div>
         <div className={stl.formContainer}>
-          <form onSubmit={handleSubmit}>
+          <form id="contactForm" action="https://formsubmit.co/b8751cb9eddb5801f13b5a4f026969fc" method="POST" onSubmit={handleSubmit}>
             <div>
               <input
-                placeholder='Your Name'
                 type="text"
-                id="name"
                 name="name"
+                placeholder='Your Name'
+                id="name"
                 value={formData.name}
                 onChange={handleInputChange}
               />
@@ -90,10 +93,10 @@ const Contact = () => {
             </div>
             <div>
               <input
-                placeholder='Your Email'
                 type="email"
-                id="email"
                 name="email"
+                placeholder='Your Email'
+                id="email"
                 value={formData.email}
                 onChange={handleInputChange}
               />

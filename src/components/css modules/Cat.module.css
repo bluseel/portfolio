@@ -51,3 +51,9 @@
   right: 0vw;
   bottom: -40vh;
 }
+
+.catInAboutMe{
+  bottom: 40px;
+  right: -30px;
+  transform: rotate(180deg);
+}

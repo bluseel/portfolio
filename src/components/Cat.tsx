@@ -71,7 +71,23 @@ useEffect(() => {
   if (pageName === "Projects") {
     if (catElement) {
       catElement.classList.add(stl.catInProjects);
+
+      catElement.classList.remove(stl.catInHome);      
+      catElement.classList.remove(stl.catInContact);
+
+    }
+  }
+  if (pageName === "About Me") {
+    if (catElement) {
       catElement.classList.remove(stl.catInHome);
+      catElement.classList.remove(stl.catInProjects);
+      catElement.classList.remove(stl.catInContact);
+      catElement.classList.add(stl.catInAboutMe);
+
+
+      
+      catEyes?.classList.add(stl.eyesInProjects);
+      catEyes?.classList.remove(stl.eyesInHome);
 
     }
   }
