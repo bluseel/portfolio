@@ -44,7 +44,7 @@ const Header: React.FC<HeaderProps> = ({pageName, setPageName}) => {
   // change color of header based on bg coloor
   useEffect(() => {
     const headerElem = document.querySelector(`.${stl.headerContainer}`);
-    if (pageName === "Home"){
+    if (pageName === "Home" || pageName === "About Me" ){
       if (headerElem){
         headerElem.classList.remove(stl.blackTextColor);
         headerElem.classList.add(stl.yellowTextColor);

@@ -1,10 +1,7 @@
 import { useState } from 'react';
 import stl from './Contact.module.css';
-import fb from '/contact/fb.png';
-import twitter from '/contact/twitter.png';
 import github from '/contact/github.png';
 import ln from '/contact/ln.png';
-import whatsapp from '/contact/whatsapp.png';
 import gmail from '/contact/gmail.png';
 
 const Contact = () => {
@@ -21,6 +18,7 @@ const Contact = () => {
   });
 
   const [submitMessage, setSubmitMessage] = useState('');
+  const [copySuccess, setCopySuccess] = useState('');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -67,11 +65,19 @@ const Contact = () => {
       return;
     }
 
-    // Set the message indicating functionality is under development
     setSubmitMessage('Confirm reCAPTCHA and return to original site');
 
-    // If there are no errors, submit the form manually
     document.getElementById('contactForm').submit();
+  };
+
+  const handleEmailCopy = () => {
+    const email = 'sahitoattique@gmail.com'; // Replace with your email
+    navigator.clipboard.writeText(email).then(() => {
+      setCopySuccess('Email copied to clipboard!');
+      setTimeout(() => {
+        setCopySuccess('');
+      }, 2000);
+    });
   };
 
   return (
@@ -124,24 +130,16 @@ const Contact = () => {
         </div>
         <div className={stl.linksContainer}>
           <div className={stl.imageContainer}>
-            <img src={fb} alt="" />
+            <img src={github} alt="" onClick={() => { window.location.href = 'https://github.com/bluseel'; }} />
           </div>
-          <div className={stl.imageContainer}>
-            <img src={twitter} alt="" />
-          </div>
-          <div className={stl.imageContainer}>
-            <img src={whatsapp} alt="" />
-          </div>
-          <div className={stl.imageContainer}>
-            <img src={github} alt="" />
-          </div>
-          <div className={stl.imageContainer}>
+          <div className={stl.imageContainer} onClick={() => { window.location.href = 'https://www.linkedin.com/in/attique-sahito-208762304'; }}>
             <img src={ln} alt="" />
           </div>
-          <div className={stl.imageContainer}>
+          <div className={stl.imageContainer} onClick={handleEmailCopy}>
             <img src={gmail} alt="" />
           </div>
         </div>
+        {copySuccess && <p className={stl.copySuccess}>{copySuccess}</p>}
       </div>
     </div>
   );

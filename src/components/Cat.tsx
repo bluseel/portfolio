@@ -52,28 +52,39 @@ useEffect(() => {
   const catEyes = document.querySelector(`.${stl.eyesContainer}`);
   if (pageName === "Home") {
     if (catElement) {
-      catElement.classList.add(stl.catInHome);
       catElement.classList.remove(stl.catInProjects);
       catElement.classList.remove(stl.catInContact);
+      catElement.classList.remove(stl.catInAboutMe);
+      catElement.classList.add(stl.catInHome);
       
     }
   }
   if (pageName === "Contact") {
     if (catElement) {
-      catElement.classList.add(stl.catInContact);
+      catElement.classList.remove(stl.catInHome);
+      catElement.classList.remove(stl.catInAboutMe);
       catElement.classList.remove(stl.catInProjects);
+      catElement.classList.add(stl.catInContact);
+
       
       catElement.classList.add(stl.eyesInHome);
+      catEyes?.classList.remove(stl.eyesInHome);
+
       catEyes?.classList.remove(stl.eyesInProjects);
       
     }
   }
   if (pageName === "Projects") {
     if (catElement) {
+      
+      catElement.classList.remove(stl.catInHome);
+      catElement.classList.remove(stl.catInAboutMe);
+      catElement.classList.remove(stl.catInContact);
       catElement.classList.add(stl.catInProjects);
 
-      catElement.classList.remove(stl.catInHome);      
-      catElement.classList.remove(stl.catInContact);
+      catEyes?.classList.remove(stl.eyesInProjects);
+      catEyes?.classList.add(stl.eyesInHome);
+
 
     }
   }

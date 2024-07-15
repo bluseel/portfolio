@@ -27,7 +27,8 @@
 }
 
 .leftEye{
-
+  /* add this in mobile versoin */
+  /* transition: transform 0.25s ease-in-out; */
   width: 2rem;
 }
 
@@ -38,8 +39,7 @@
 
 
 .catInHome{
-  right: 0vw;
-  bottom: 100vh;
+  right: 100vw;
 }
 
 .catInContact{

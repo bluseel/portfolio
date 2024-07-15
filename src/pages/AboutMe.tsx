@@ -1,17 +1,21 @@
 import React from 'react'
 import mongodb from '/aboutMe/mongodb.png'
-import expressJS from '/aboutMe/express.png'
-import reactJS from '/aboutMe/react.png'
-import nodeJS from '/aboutMe/node.png'
-import figma from '/aboutMe/figma.png'
-import threeJS from '/aboutMe/three.png'
-import vite from '/aboutMe/vite.png'
-import typescript from '/aboutMe/ts.png'
 
 import stl from './aboutme.module.css'
 import me from '/aboutMe/me.png'
 
 const AboutMe = () => {
+  const skills = [
+    { src: '/aboutMe/mongodb.png', alt: 'MongoDB' },
+    { src: '/aboutMe/express.png', alt: 'ExpressJS' },
+    { src: '/aboutMe/react.png', alt: 'ReactJS' },
+    { src: '/aboutMe/node.png', alt: 'NodeJS' },
+    { src: '/aboutMe/figma.png', alt: 'Figma' },
+    { src: '/aboutMe/three.png', alt: 'ThreeJS' },
+    { src: '/aboutMe/vite.png', alt: 'Vite' },
+    { src: '/aboutMe/ts.png', alt: 'TypeScript' },
+  ];
+  
   return (
     <div className={stl.aboutMeContainer}>
       <div className={stl.descriptionPortion}>
@@ -28,11 +32,17 @@ const AboutMe = () => {
         </div>
       </div>
 
-      <div className={stl.skillSetContainer}>
-        <div className={stl.singleSkillContainer}>
-          <img src={mongodb} alt="" />
-        </div>
+      <div className={stl.skillsContainer}>
+      <div className={stl.title}>
+        TECHNOLOGIES
       </div>
+      {skills.map((skill, index) => (
+        <div className={stl.singleSkillContainer} key={index}>
+          <img src={skill.src} alt={skill.alt} />
+          <div className={stl.skillOverlay}>{skill.alt}</div>
+        </div>
+      ))}
+    </div>
     </div>
   )
 }
