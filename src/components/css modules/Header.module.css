@@ -9,11 +9,25 @@
   src: url('../fonts/Roboto-Medium.ttf') format('truetype');
 }
 
+.hamburgerImageContainer{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  
+  width:40px;
+  padding: 5px 8px;
+  background-color: #FFFF3F;
+  img{
+    width: 100%;
+  }
+}
+
 .headerContainer{
   /* height: 120vh; */
   font-family: 'Roboto-Medium';
 
   font-size: 0.9rem;
+  position: absolute;
 }
 
 .yellowTextColor{

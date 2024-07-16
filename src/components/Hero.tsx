@@ -9,7 +9,7 @@ const Hero = () => {
           DESIGNING
         </div>
         <div className={stl.maintext}>
-          OUTSIDE THE BOX
+          <span className={stl.MobileOUTSIDE}> OUTSIDE </span> <span className={stl.MobileTheBox}>  THE BOX </span>
         </div>
       </div>
       <div className={stl.bottomText}>
@@ -17,7 +17,7 @@ const Hero = () => {
           DEVELOPING
         </div>
         <div className={stl.bottomMaintext}>
-          YOUR IDEAS
+          <span className={stl.MobileYOUR}>YOUR</span> <span className={stl.MobileIDEAS}>IDEAS</span>
         </div>
       </div>
 

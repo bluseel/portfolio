@@ -1,59 +1,131 @@
-
-.catContainer{
+.catContainer {
   position: absolute;
-  .catImg{
+
+  .catImg {
     width: 14rem;
     object-fit: fill;
-    
+
   }
 }
 
-.eyesContainer{
+
+.eyesContainer {
   position: absolute;
   display: flex;
   column-gap: 7px;
   top: 70px;
   left: 79px;
+
 }
 
-.eyesInProjects{
+.eyesInProjects {
   transform: rotate(180deg);
   top: 68px;
 
 }
 
-.eyesInHome{
+.eyesInHome {
   transform: rotate(0deg);
 }
 
-.leftEye{
+.leftEye {
   /* add this in mobile versoin */
-  /* transition: transform 0.25s ease-in-out; */
   width: 2rem;
 }
 
-.rightEye{
+.rightEye {
   width: 2rem;
-  
+
+}
+
+@media only screen and (max-width: 600px) {
+  .leftEye {
+    transition: transform 0.25s ease-in-out;
+  }
+
+  .rightEye {
+    transition: transform 0.25s ease-in-out;
+  }
+
 }
 
 
-.catInHome{
+.catInHome {
   right: 100vw;
 }
 
-.catInContact{
-  right: 6vw;
-  bottom: -40vh;
+
+
+
+.catInContact {
+  position: absolute;
+  left: -2vw;
+  top: -40vh;
+  transform: rotate(-180deg);
 }
 
-.catInProjects{
+.eyesInContact {
+  transform: rotate(-180deg);
+}
+
+@media only screen and (max-width: 600px) {
+  .catInContact {
+    position: absolute;
+    top: 58vh;
+    transform: rotate(0deg);
+
+    .catImg{
+      width: 170px;
+    }
+
+  }
+  .eyesInContact {
+    transform: rotate(0deg);
+    top:52px;
+    left:57px;
+    .leftEye{
+      width: 25px;
+    }
+    
+    .rightEye{
+      width: 25px;
+
+    }
+  }
+}
+
+
+
+
+
+.catInProjects {
   right: 0vw;
   bottom: -40vh;
 }
 
-.catInAboutMe{
+@media only screen and (max-width: 600px) {
+  .catInProjects {
+    right: -10vw;
+    bottom: -30vh;
+  }
+
+  .catContainer {
+    overflow: ;
+  }
+}
+
+
+.catInAboutMe {
   bottom: 40px;
   right: -30px;
   transform: rotate(180deg);
+}
+
+
+@media only screen and (max-width: 600px) {
+  .catInAboutMe {
+    bottom: 17svh;
+    right: -30px;
+    transform: rotate(180deg);
+  }
 }

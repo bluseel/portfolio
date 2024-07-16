@@ -20,12 +20,13 @@
 
   font-size: 8rem;
   word-spacing: 7rem;
-  white-space:nowrap;
+  width: 100vw;
+  text-wrap: nowrap;
 }
 
 
 .bottomText{
-  position: absolute;
+  position: relative;
   bottom: 0;
 }
 
@@ -76,4 +77,81 @@
   position: absolute;
   top: 70px;
   left: 118px;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .heroContainer{
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  
+  .upperText{
+    /* margin-top: 5vh; */
+    margin: 0;
+    margin-top: 4vh;
+    padding: 2dvh 2dvw;
+  }
+  .subtext{
+    font-size: 0.7rem;
+  }
+    
+  .maintext {
+    text-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    margin-top: -1vh;
+    
+    .MobileOUTSIDE{
+      font-size: 3rem;
+      
+    }
+    .MobileTheBox{
+      width: 100vw;
+      margin-top: -0.5dvh;
+      word-spacing: 0;
+      letter-spacing: 0.3rem;
+      font-size: 6rem;
+      
+      text-wrap: nowrap;
+    }
+
+    font-size: 2rem;
+    letter-spacing: 0.2rem;
+    text-wrap: wrap;
+  }
+  
+  
+
+  .bottomText{
+   position: absolute;
+   bottom: 1vh;
+  }
+  
+  .bottomSubtext {
+
+  }
+  
+  .bottomMaintext {
+    text-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    margin-top: -1vh;
+    .MobileYOUR{
+      font-size: 3rem;
+      
+    }
+    .MobileIDEAS{
+      width: 100vw;
+      margin-top: -0.5dvh;
+      word-spacing: 0;
+      letter-spacing: 0.3rem;
+      font-size: 6rem;
+      
+      text-wrap: nowrap;
+    }
+  }
+
+
 }

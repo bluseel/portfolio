@@ -15,7 +15,7 @@ const AboutMe = () => {
     { src: '/aboutMe/vite.png', alt: 'Vite' },
     { src: '/aboutMe/ts.png', alt: 'TypeScript' },
   ];
-  
+
   return (
     <div className={stl.aboutMeContainer}>
       <div className={stl.descriptionPortion}>
@@ -33,16 +33,19 @@ const AboutMe = () => {
       </div>
 
       <div className={stl.skillsContainer}>
-      <div className={stl.title}>
-        TECHNOLOGIES
-      </div>
-      {skills.map((skill, index) => (
-        <div className={stl.singleSkillContainer} key={index}>
-          <img src={skill.src} alt={skill.alt} />
-          <div className={stl.skillOverlay}>{skill.alt}</div>
+        <div className={stl.title}>
+          TECHNOLOGIES
         </div>
-      ))}
-    </div>
+        <div className={stl.onlySkillImagesContainer}>
+
+          {skills.map((skill, index) => (
+            <div className={stl.singleSkillContainer} key={index}>
+              <img src={skill.src} alt={skill.alt} />
+              <div className={stl.skillOverlay}>{skill.alt}</div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }

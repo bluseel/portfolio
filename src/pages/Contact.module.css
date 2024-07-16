@@ -1,14 +1,14 @@
 .contactContainer{  
   display: flex;
   text-align: center;
-  
+  min-width: 100vw;
 }
+
+
 
 .formSection{
   flex: 3;
-  color: #FFFF3F;
   padding: 50px;
-  background-color: black;
   height: 100svh;
 
   .title{   
@@ -20,7 +20,6 @@
 }
 
 
-
 .formContainer {
   display: flex;
   flex-direction: column;
@@ -28,12 +27,6 @@
 
 .formContainer div {
   margin-bottom: 1em;
-}
-
-.formContainer label {
-  display: block;
-  margin-bottom: 0.5em;
-  font-weight: bold;
 }
 
 .formContainer input,
@@ -48,15 +41,21 @@
   
 }
 
+
+
+
+
 .formContainer textarea {
   resize: vertical;
   height: 23svh;
 }
 
+
+
 .formContainer button {
   padding: 0.3em 1em;
-  background-color: #FFFF3F;
-  color: black;
+  background-color: black;
+  color: #FFFF3F;
   font-weight: 700;
   border: none;
   cursor: pointer;
@@ -65,7 +64,7 @@
 }
 
 .formContainer button:hover {
-  background-color: #fefe83;
+  background-color: rgb(29, 29, 29);
 }
 
 .error {
@@ -77,18 +76,65 @@
 
 
 
+/* mbile for above */
+@media only screen and (max-width: 600px) {
+  .contactContainer{
+    flex-direction: column;
+
+  }
+  .formSection{
+    min-height: 70vh;
+
+    padding: 30px 20px;
+
+    .title{
+      font-size: 3rem;
+      letter-spacing: 0.5rem;
+    }
+  }
+
+  .formContainer input,
+.formContainer textarea {
+  height: 6svh;
+  font-size: 1rem;
+  padding: 0.4em;
+}
+
+.formContainer textarea{
+  font-size: 1rem;
+  height: 20dvh;
+}
+
+.error{
+  color: red;
+  font-size: 0.875em;
+  margin-top: 0.2em;
+
+}
+}
+
+
+
+
 
 
 
 
 /* -----------------------------  links part ----------------------------- */
+
+
 .linksSection {
+  
+  color: #FFFF3F;
+  background-color: black;
   flex: 1;
   padding: 50px;
+  z-index: 10;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-height: 100vh;
 
 
   .title{   
@@ -109,9 +155,9 @@
 
   /* simple rounded image */
   .imageContainer{
+    display: flex;
     width: 100px;
     
-    display: flex;
     align-items: center;
 
     img{
@@ -130,3 +176,31 @@
   }
 
 }
+
+@media only screen and (max-width: 600px) {
+  .linksSection{
+    position: relative;
+    padding: 20px;
+    flex: 30vh;
+    .title{
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .linksContainer{
+      flex-wrap: nowrap;
+      column-gap: 10px;
+
+    }
+
+    .imageContainer{
+      img{
+        width: 70px;
+      }
+    }
+  }
+}
+
+
+
+

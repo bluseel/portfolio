@@ -1,47 +1,72 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact.tsx';
-
-import Cat from "./components/Cat";
-import Sphere from './components/home components/Sphere.tsx';
+import Cat from './components/Cat';
 import AboutMe from './pages/AboutMe.tsx';
 
 function App() {
-  const [pageName, setPageName] = useState("Home");
+  const [pageName, setPageName] = useState('Home');
+
+  const homeRef = useRef(null);
+  const projectsRef = useRef(null);
+  const aboutMeRef = useRef(null);
+  const contactRef = useRef(null);
 
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = "https://unpkg.com/@splinetool/viewer@1.9.0/build/spline-viewer.js";
-    script.type = "module";
-    document.body.appendChild(script);
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const section = entry.target.getAttribute('data-section');
+          setPageName(section);
+        }
+      });
+    }, options);
+
+    const sections = [
+      homeRef.current,
+      projectsRef.current,
+      aboutMeRef.current,
+      contactRef.current,
+    ];
+
+    sections.forEach((section) => {
+      if (section) observer.observe(section);
+    });
+
+    return () => {
+      sections.forEach((section) => {
+        if (section) observer.unobserve(section);
+      });
+    };
   }, []);
 
   return (
-    <div>
+    <div className="app-container">
       <Cat pageName={pageName} />
-
-
       <Header pageName={pageName} setPageName={setPageName} />
-      
-      {pageName === "Home" ? (
-        <>
+      <div className="scroll-container">
+        <section className="scroll-section" data-section="Home" ref={homeRef} id="HomeSection">
           <Home />
-          <Sphere/>
-        </>
-      ) : pageName === "Projects" ? (
-        <Projects />
-      ) : pageName === "Contact" ? (
-        <Contact />
-      ) : pageName === "About Me" ? (
-        <AboutMe />
-      )       
-      : <div></div> 
-      }
-
-      {/* <SingleProject/> */}
+        </section>
+        <section className="scroll-section" data-section="Projects" ref={projectsRef} id="ProjectsSection">
+          <Projects />
+        </section>
+        <section className="scroll-section" data-section="About Me" ref={aboutMeRef} id="AboutMeSection">
+          <AboutMe />
+        </section>
+        <section className="scroll-section" data-section="Contact" ref={contactRef} id="ContactSection">
+          <Contact />
+        </section>
+      </div>
     </div>
   );
 }

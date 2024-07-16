@@ -136,7 +136,7 @@ const Contact = () => {
             <img src={ln} alt="" />
           </div>
           <div className={stl.imageContainer} onClick={handleEmailCopy}>
-            <img src={gmail} alt="" />
+            <img src={gmail } alt="" />
           </div>
         </div>
         {copySuccess && <p className={stl.copySuccess}>{copySuccess}</p>}

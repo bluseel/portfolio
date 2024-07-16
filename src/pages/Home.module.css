@@ -1,5 +1,7 @@
 .homeContainer{
   max-width: 100vw;
+  position: relative;
+  overflow-x: hidden;
 }
 
 .backgroundShape {
@@ -13,4 +15,16 @@
   height: 100vh;
   transform: skew(30deg);
   z-index: -1;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .backgroundShape {
+    top: 0;
+    left: -70vw;
+    width: 380vw; 
+
+    transform: skew(60deg);
+
+  }
 }

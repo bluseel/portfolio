@@ -9,28 +9,39 @@
 
   scroll-snap-type: x mandatory;
   scroll-snap-stop: always;
+  position: relative;
 }
 
 
 .singleProjectContainer{
   display: flex;
   flex-direction: row;
+    width: 100vw;
+
 
 }
 
-@media (max-width: 900px) { /* Tablet */
-  .singleProjectContainer{
-    flex-wrap: wrap;
-  }
-  .projectPicture {
-    width: 50%; /* Half of the container width */
-  }
-
-}
 
 .projectPicture{
   width: 100%;
   scroll-snap-align: start;
+  border-left: 10px solid black;
+  border-right: 10px solid black;
+  margin-left: 0.5vw;
+
+}
+
+
+@media (max-width: 900px) { /* Tablet */
+  .singleProjectContainer{
+    flex-wrap: wrap;
+    padding-bottom: 30dvh;
+  }
+  .projectPicture {
+    /* border: none; */
+    border: 7px solid black;
+  }
+
 }
 
 
@@ -67,6 +78,18 @@
   }
 }
 
+@media only screen and (max-width: 600px) {
+  .projectDetail{
+    width: 100vw; 
+    font-size: 0.7rem;
+    height: 30dvh;
+    .projectName{
+      font-size: 1.5rem;
+    }
+  }
+
+}
+
 
 
 /*this has control buttons inside it */
@@ -81,6 +104,9 @@
   align-items: center;
   justify-content: space-between;
 }
+
+
+
 .controlButtons{
   display: flex;
   column-gap: 10px;
@@ -103,6 +129,7 @@
     cursor: pointer;
   }
 }
+
 
 .crossButton{
   padding: 10px;

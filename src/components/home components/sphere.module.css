@@ -11,10 +11,10 @@
 
 .sphereContainer{
   position: absolute;
-  z-index: 0;
+  z-index: 1;
   top: 40vh;
 
-  right: 2vw;
+  right: 5vw;
   margin-right: 20px;
 
   text-align: center;
@@ -28,4 +28,20 @@
 .title {
   font-size: 1rem;
   color: #FFFF3F;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .sphereContainer{
+    top:-70vh;
+    left:-10vw;
+  }
+  .title {
+    /* position: relative;
+    top: -96vh;
+    right: -10vw;
+    font-size: 1.2rem; */
+    display: none;
+
+  }
 }

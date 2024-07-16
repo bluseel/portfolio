@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import stl from './singleproject.module.css';
 import cross from '/cross.svg';
 import externalSvg from '/externalLink.svg';
@@ -41,7 +41,7 @@ const SingleProject: React.FC<SingleProjectProps> = ({ project, onClose }) => {
       const { clientX, currentTarget } = e;
       const { offsetWidth, offsetLeft } = currentTarget as HTMLDivElement;
       const middleX = offsetLeft + offsetWidth / 2;
-      const scrollAmount = offsetWidth / 2;
+      const scrollAmount = offsetWidth;
 
       if (clientX < middleX) {
         if (currentIndex === 0) {
@@ -80,17 +80,15 @@ const SingleProject: React.FC<SingleProjectProps> = ({ project, onClose }) => {
       {project.imageUrls.map((url, index) => (
         <img key={index} src={url} className={stl.projectPicture} alt="Task" />
       ))}
-     
       <div className={stl.projectDetail}>
         <div className={stl.projectName}>{project.name}</div>
-        <div className={stl.projectdescription}>
+        <div className={stl.projectDescription}>
           <ul>
             {project.bulletPoints.map((point, index) => (
               <li key={index}>{point}</li>
             ))}
           </ul>
         </div>
-
         <div className={stl.projectInfo}>
           <div className={stl.controlButtons}>
             <img src={cross} alt="Close" className={stl.crossButton} onClick={onClose} />

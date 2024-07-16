@@ -65,12 +65,11 @@ useEffect(() => {
       catElement.classList.remove(stl.catInAboutMe);
       catElement.classList.remove(stl.catInProjects);
       catElement.classList.add(stl.catInContact);
-
       
-      catElement.classList.add(stl.eyesInHome);
-      catEyes?.classList.remove(stl.eyesInHome);
-
+      
+      catEyes?.classList.remove(stl.eyesInContact);
       catEyes?.classList.remove(stl.eyesInProjects);
+      catEyes?.classList.add(stl.eyesInContact);
       
     }
   }

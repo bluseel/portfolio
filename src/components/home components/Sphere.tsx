@@ -5,17 +5,22 @@ import gsap from 'gsap';
 import styles from './sphere.module.css';
 
 const Sphere = () => {
+  const width  = window.innerWidth;
+  const isMobile : boolean = (width <= 768);
+
+
   const canvasRef = useRef(null);
 
   useEffect(() => {
     // Scene
     const scene = new THREE.Scene();
-    scene.background = null
-
-
+    scene.background = null; // Ensure background is transparent
 
     // Sphere
-    const geometry = new THREE.SphereGeometry(3, 64, 64);
+    let geometry = new THREE.SphereGeometry(3, 64, 64);
+    if (isMobile) {
+      geometry = new THREE.SphereGeometry(0.6, 64, 64);
+    }      
     const material = new THREE.MeshStandardMaterial({
       color: '#FFFF3F',
       roughness: 0.5,
@@ -24,10 +29,16 @@ const Sphere = () => {
     scene.add(mesh);
 
     // Sizes
-    const sizes = {
-      width: window.innerWidth*0.2,
-      height: window.innerHeight*0.5,
+    let sizes = {
+      width: window.innerWidth * 0.2,
+      height: window.innerHeight * 0.5,
     };
+    if (isMobile) {
+      sizes = {
+        width: window.innerWidth * 0.3,
+        height: window.innerHeight * 0.6,
+      }
+    }    
 
     // Light
     const light = new THREE.PointLight(0xffffff, 15, 10);
@@ -46,7 +57,7 @@ const Sphere = () => {
     scene.add(camera);
 
     // Renderer
-    const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current });
+    const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current, alpha: true }); // Alpha true for transparency
     renderer.setSize(sizes.width, sizes.height);
     renderer.setPixelRatio(2);
     renderer.render(scene, camera);
@@ -61,11 +72,10 @@ const Sphere = () => {
 
     // Resize
     const handleResize = () => {
-      sizes.width = window.innerWidth*0.2;
-      sizes.height = window.innerHeight*0.5;
       camera.aspect = sizes.width / sizes.height;
       camera.updateProjectionMatrix();
       renderer.setSize(sizes.width, sizes.height);
+      
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     };
     window.addEventListener('resize', handleResize);

@@ -1,15 +1,28 @@
 .projectsPageContainer{
-  overflow-x: hidden;
   cursor: auto;
+  width: 100vw;
+  
+  overflow: hidden;
 }
+
+@media only screen and (max-width: 600px) {
+  
+  .projectsPageContainer{
+    overflow: hidden;
+  }
+  .projectNamesContainer{
+    height: 100vh;
+    width: 100vw;
+  }
+}
+
 
 .projectNamesContainer{
   position: relative;
   height: 100vh;
-  overflow-y: scroll;
-
 
   z-index: 5;
+  left: 0px;
   ul{
 
 
@@ -18,7 +31,7 @@
     li{
     padding: 0px 10px;  
 
-      border-top: 2px solid black;}
+      border: 2px solid black;}
 
     
   }
@@ -68,14 +81,15 @@
 }
 
 
+
 /* transition */
 
 
 .projectNamesContainer,
 .singleProjectContainer {
-  position: absolute;
+  /* position: absolute; */
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 
 .enter {
@@ -98,4 +112,41 @@
   opacity: 0;
   transform: translateX(-100%);
   transition: opacity 300ms, transform 300ms;
+}
+
+
+
+
+/* hover effect image */
+.projectNamesContainer{
+  overflow-x: hidden;
+
+}
+
+
+.hoverImageContainer {
+  position: absolute;
+  pointer-events: none; /* Ensures the div does not interfere with cursor events */
+  transform: translate(0%, 0%); /* Centers the image around the cursor */
+  z-index: 1; /* Makes sure the image is above other elements */
+}
+
+.hoverImageContainer img {
+  max-width: 500px; /* Adjust the size as needed */
+  max-height: 500px; /* Adjust the size as needed */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
+
+
+@media only screen and (max-width: 600px) {
+
+  .projectNamesContainer{
+  
+    z-index: 5;
+    font-size: 2rem;
+
+  }
 }
