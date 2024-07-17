@@ -96,8 +96,9 @@ useEffect(() => {
 
 
       
-      catEyes?.classList.add(stl.eyesInProjects);
       catEyes?.classList.remove(stl.eyesInHome);
+      catEyes?.classList.remove(stl.eyesInContact);
+      catEyes?.classList.add(stl.eyesInProjects);
 
     }
   }

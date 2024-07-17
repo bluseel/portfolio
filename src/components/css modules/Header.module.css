@@ -9,25 +9,18 @@
   src: url('../fonts/Roboto-Medium.ttf') format('truetype');
 }
 
-.hamburgerImageContainer{
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  
-  width:40px;
-  padding: 5px 8px;
-  background-color: #FFFF3F;
-  img{
-    width: 100%;
-  }
-}
 
 .headerContainer{
   /* height: 120vh; */
   font-family: 'Roboto-Medium';
 
-  font-size: 0.9rem;
-  position: absolute;
+  font-size: 1rem;
+  position: relative;
+  z-index: 99999999;
+  top :20px; 
+  right: -570px;
+  width: 90px;
+
 }
 
 .yellowTextColor{
@@ -41,15 +34,13 @@
 
 
 .pageList{
-  position:fixed;
+  position:absolute;
   z-index: 99;
-  top: 10px;
-  right: 10px;
+
 
   list-style: none;
   overflow: hidden;
   height: 1rem;
-  width: 80px;
 
   transition: height 0.3s ease; /* Shortened transition duration */
 }

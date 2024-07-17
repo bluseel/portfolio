@@ -5,9 +5,8 @@ import gsap from 'gsap';
 import styles from './sphere.module.css';
 
 const Sphere = () => {
-  const width  = window.innerWidth;
-  const isMobile : boolean = (width <= 768);
-
+  const width = window.innerWidth;
+  const isMobile = width <= 768;
 
   const canvasRef = useRef(null);
 
@@ -16,11 +15,12 @@ const Sphere = () => {
     const scene = new THREE.Scene();
     scene.background = null; // Ensure background is transparent
 
-    // Sphere
-    let geometry = new THREE.SphereGeometry(3, 64, 64);
+    // Sphere Geometry
+    let geometry = new THREE.SphereGeometry(3, 64, 64); // Default size for desktop
     if (isMobile) {
-      geometry = new THREE.SphereGeometry(0.6, 64, 64);
-    }      
+      geometry = new THREE.SphereGeometry(3, 64, 64); // Sphere size (inside canvas)
+    }
+
     const material = new THREE.MeshStandardMaterial({
       color: '#FFFF3F',
       roughness: 0.5,
@@ -28,17 +28,17 @@ const Sphere = () => {
     const mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
 
-    // Sizes
+    // Renderer Sizes
     let sizes = {
       width: window.innerWidth * 0.2,
       height: window.innerHeight * 0.5,
     };
     if (isMobile) {
       sizes = {
-        width: window.innerWidth * 0.3,
-        height: window.innerHeight * 0.6,
-      }
-    }    
+        width: window.innerWidth * 0.8, // Adjust width for mobile as needed (canvas size)
+        height: window.innerHeight * 0.4, // Adjust height for mobile as needed
+      };
+    }
 
     // Light
     const light = new THREE.PointLight(0xffffff, 15, 10);
@@ -75,7 +75,6 @@ const Sphere = () => {
       camera.aspect = sizes.width / sizes.height;
       camera.updateProjectionMatrix();
       renderer.setSize(sizes.width, sizes.height);
-      
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     };
     window.addEventListener('resize', handleResize);
@@ -95,50 +94,18 @@ const Sphere = () => {
 
     // Mouse Animation Color
     let mouseDown = false;
-    let rgb = [];
     window.addEventListener('mousedown', () => { mouseDown = true });
     window.addEventListener('mouseup', () => { mouseDown = false });
-
-    window.addEventListener('mousemove', (e) => {
-      if (mouseDown) {
-        rgb = [
-          Math.round((e.pageX / window.innerWidth) * 255 * Math.random()),
-          Math.round((e.pageY / window.innerHeight) * 255 * Math.random()),
-          150,
-        ];
-        const newColor = new THREE.Color(`rgb(${rgb.join(',')})`);
-        gsap.to(mesh.material.color, {
-          r: newColor.r,
-          g: newColor.g,
-          b: newColor.b,
-        });
-      }
-    });
 
     // Clean up event listeners on component unmount
     return () => {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('mousedown', () => { mouseDown = true });
       window.removeEventListener('mouseup', () => { mouseDown = false });
-      window.removeEventListener('mousemove', (e) => {
-        if (mouseDown) {
-          rgb = [
-            Math.round((e.pageX / sizes.width) * 255),
-            Math.round((e.pageY / sizes.height) * 255),
-            150,
-          ];
-          const newColor = new THREE.Color(`rgb(${rgb.join(',')})`);
-          gsap.to(mesh.material.color, {
-            r: newColor.r,
-            g: newColor.g,
-            b: newColor.b,
-          });
-        }
-      });
     };
-  }, []);
+  }, [isMobile]);
 
-  return (
+  return ( 
     <div className={styles.sphereContainer}>
       <canvas ref={canvasRef} className={styles.webgl}></canvas>
       <div className={styles.title}>SPIN ME!</div>

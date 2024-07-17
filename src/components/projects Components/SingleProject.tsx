@@ -80,24 +80,30 @@ const SingleProject: React.FC<SingleProjectProps> = ({ project, onClose }) => {
       {project.imageUrls.map((url, index) => (
         <img key={index} src={url} className={stl.projectPicture} alt="Task" />
       ))}
-      <div className={stl.projectDetail}>
-        <div className={stl.projectName}>{project.name}</div>
-        <div className={stl.projectDescription}>
-          <ul>
-            {project.bulletPoints.map((point, index) => (
-              <li key={index}>{point}</li>
-            ))}
-          </ul>
-        </div>
-        <div className={stl.projectInfo}>
-          <div className={stl.controlButtons}>
-            <img src={cross} alt="Close" className={stl.crossButton} onClick={onClose} />
-            <a href={project.link} target="_blank" rel="noopener noreferrer">
-              <img src={externalSvg} alt="External Link" className={stl.externalButton} />
-            </a>
+      <div className={stl.fixesMobileSticky}>
+        <div className={stl.projectDetail}>
+          <div className={stl.projectName}>{project.name}</div>
+          <div className={stl.projectDescription}>
+            <ul>
+              {project.bulletPoints.map((point, index) => (
+                <li key={index}>{point}</li>
+              ))}
+            </ul>
+          </div>
+
+
+
+          <div className={stl.projectInfo}>
+            <div className={stl.controlButtons}>
+              <img src={cross} alt="Close" className={stl.crossButton} onClick={onClose} />
+              <a href={project.link} target="_blank" rel="noopener noreferrer">
+                <img src={externalSvg} alt="External Link" className={stl.externalButton} />
+              </a>
+            </div>
           </div>
         </div>
       </div>
+
     </div>
   );
 };

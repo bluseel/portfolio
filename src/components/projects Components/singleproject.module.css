@@ -35,7 +35,7 @@
 @media (max-width: 900px) { /* Tablet */
   .singleProjectContainer{
     flex-wrap: wrap;
-    padding-bottom: 30dvh;
+    padding-bottom: 0dvh;
   }
   .projectPicture {
     /* border: none; */
@@ -51,10 +51,9 @@
 
 .projectDetail{
   cursor: auto;
-  
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 0;  
+  right: 0;  
   width: 45vw;
   height: 30vh;
   padding: 10px;
@@ -80,12 +79,18 @@
 
 @media only screen and (max-width: 600px) {
   .projectDetail{
+    top: 0;
+    position: absolute;
     width: 100vw; 
     font-size: 0.7rem;
-    height: 30dvh;
+    height: max-content;
+    width: 60vw;
     .projectName{
-      font-size: 1.5rem;
+      font-size: 1rem;
     }
+    ul{
+      font-size: 0.7rem;
+    } 
   }
 
 }
@@ -105,7 +110,11 @@
   justify-content: space-between;
 }
 
-
+@media (max-width: 600px) {
+  .projectInfo{
+    padding: 5px;
+  }
+}
 
 .controlButtons{
   display: flex;
@@ -140,21 +149,13 @@
 }
 
 /* tablet */
-@media (max-width: 900px) {
+@media (max-width: 600px) {
   .controlButtons{
+    column-gap: 10px;
     img{
-      width: 70px;
+      width: 30px;
     }
   }
 }
 
-
-/*phone  */
-@media (max-width: 700px) {
-  .controlButtons{
-    img{
-      width: 40px;
-    }
-  }
-}
 

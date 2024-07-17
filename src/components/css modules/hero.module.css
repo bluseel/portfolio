@@ -27,7 +27,7 @@
 
 .bottomText{
   position: relative;
-  bottom: 0;
+  bottom: -20vh;
 }
 
 .bottomSubtext {
