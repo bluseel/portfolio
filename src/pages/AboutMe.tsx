@@ -1,5 +1,3 @@
-import React from 'react'
-import mongodb from '/aboutMe/mongodb.png'
 
 import stl from './aboutme.module.css'
 import me from '/aboutMe/me.png'

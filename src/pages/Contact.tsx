@@ -20,7 +20,7 @@ const Contact = () => {
   const [submitMessage, setSubmitMessage] = useState('');
   const [copySuccess, setCopySuccess] = useState('');
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e:  React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -32,12 +32,12 @@ const Contact = () => {
     });
   };
 
-  const validateEmail = (email) => {
+  const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const newErrors = {
@@ -67,7 +67,10 @@ const Contact = () => {
 
     setSubmitMessage('Confirm reCAPTCHA and return to original site');
 
-    document.getElementById('contactForm').submit();
+    const contactForm = document.getElementById('contactForm') as HTMLFormElement | null;
+    if (contactForm) {
+      contactForm.submit();
+    }
   };
 
   const handleEmailCopy = () => {

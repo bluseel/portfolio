@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import gsap from 'gsap';
@@ -8,9 +8,12 @@ const Sphere = () => {
   const width = window.innerWidth;
   const isMobile = width <= 768;
 
-  const canvasRef = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
 
   useEffect(() => {
+    if (!canvasRef.current) return;
+
     // Scene
     const scene = new THREE.Scene();
     scene.background = null; // Ensure background is transparent
@@ -92,16 +95,10 @@ const Sphere = () => {
     tl.fromTo(mesh.scale, { z: 0, x: 0, y: 0 }, { z: 1, x: 1, y: 1 });
     tl.fromTo(`.${styles.title}`, { opacity: 0 }, { opacity: 1 });
 
-    // Mouse Animation Color
-    let mouseDown = false;
-    window.addEventListener('mousedown', () => { mouseDown = true });
-    window.addEventListener('mouseup', () => { mouseDown = false });
 
     // Clean up event listeners on component unmount
     return () => {
       window.removeEventListener('resize', handleResize);
-      window.removeEventListener('mousedown', () => { mouseDown = true });
-      window.removeEventListener('mouseup', () => { mouseDown = false });
     };
   }, [isMobile]);
 

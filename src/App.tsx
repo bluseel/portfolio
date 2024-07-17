@@ -26,7 +26,8 @@ function App() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const section = entry.target.getAttribute('data-section');
-          setPageName(section);
+
+          setPageName(section?section:"");
         }
       });
     }, options);

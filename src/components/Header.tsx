@@ -1,4 +1,4 @@
-import { useEffect, Dispatch, SetStateAction } from 'react';
+import { useEffect, useState, Dispatch, SetStateAction } from 'react';
 import stl from "./css modules/Header.module.css";
 
 interface HeaderProps {
@@ -8,7 +8,11 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ pageName, setPageName }) => {
   const pages = ["Home", "Projects", "About Me", "Contact"];
-  const allPages = [""];
+  const [showPages, setShowPages] = useState(false);
+
+  
+  const width = window.innerWidth;
+  const isMobile = width <= 768;
 
   function handlePageChange(e: React.MouseEvent<HTMLLIElement>) {
     const target = e.currentTarget as HTMLLIElement;
@@ -21,6 +25,8 @@ const Header: React.FC<HeaderProps> = ({ pageName, setPageName }) => {
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
     }
+
+    setShowPages(false); // Hide pages after selecting one
   }
 
   useEffect(() => {
@@ -30,25 +36,17 @@ const Header: React.FC<HeaderProps> = ({ pageName, setPageName }) => {
     });
   }, []);
 
-  const currentPageIndex = pages.indexOf(pageName);
-
-  let totalPages = pages.length;
-  let index = currentPageIndex;
-  while (totalPages > 0) {
-    if (index === pages.length || index === -1) {
-      index = 0;
-    }
-    allPages.push(pages[index]);
-    totalPages--;
-    index++;
-  }
-
   useEffect(() => {
     const headerElem = document.querySelector(`.${stl.headerContainer}`);
     if (pageName === "Home" || pageName === "About Me" || pageName === "Contact") {
       if (headerElem) {
         headerElem.classList.remove(stl.blackTextColor);
         headerElem.classList.add(stl.yellowTextColor);
+        
+        if (isMobile && pageName === "Contact") {
+          headerElem.classList.add(stl.blackTextColor);
+          headerElem.classList.remove(stl.yellowTextColor);          
+        }
       }
     }
     if (pageName === "Projects") {
@@ -61,14 +59,32 @@ const Header: React.FC<HeaderProps> = ({ pageName, setPageName }) => {
 
   return (
     <div className={stl.headerContainer}>
-      <ul className={stl.pageList}>
-        <div>
-          {allPages.map((page) => (
-            <li className={pageName === page ? stl.currentPage : stl.normalPage} onClick={handlePageChange}>
-              {pageName === page ? `>${page}<` : `${page}`}
-            </li>
-          ))}
-        </div>
+      <ul 
+        className={stl.pageList}
+        onMouseEnter={() => setShowPages(true)}
+        onMouseLeave={() => setShowPages(false)}
+      >
+        <li 
+          className={stl.currentPage} 
+          onClick={() => setShowPages(!showPages)}
+        >
+          {`>${pageName}<`}
+        </li>
+        {showPages && (
+          <div>
+            {pages.map((page) => (
+              page !== pageName && (
+                <li 
+                  key={page} 
+                  className={stl.normalPage} 
+                  onClick={handlePageChange}
+                >
+                  {page}
+                </li>
+              )
+            ))}
+          </div>
+        )}
       </ul>
     </div>
   );
