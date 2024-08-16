@@ -1,26 +1,28 @@
-import { useState } from 'react';
-import stl from './Contact.module.css';
-import github from '/contact/github.png';
-import ln from '/contact/ln.png';
-import gmail from '/contact/gmail.png';
+import { useState } from "react";
+import stl from "./Contact.module.css";
+import github from "/contact/github.png";
+import ln from "/contact/ln.png";
+import gmail from "/contact/gmail.png";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
 
   const [errors, setErrors] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
 
-  const [submitMessage, setSubmitMessage] = useState('');
-  const [copySuccess, setCopySuccess] = useState('');
+  const [submitMessage, setSubmitMessage] = useState("");
+  const [copySuccess, setCopySuccess] = useState("");
 
-  const handleInputChange = (e:  React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -28,7 +30,7 @@ const Contact = () => {
     });
     setErrors({
       ...errors,
-      [name]: '',
+      [name]: "",
     });
   };
 
@@ -37,27 +39,27 @@ const Contact = () => {
     return emailRegex.test(email);
   };
 
-  const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const newErrors = {
-      name: '',
-      email: '',
-      message: '',
+      name: "",
+      email: "",
+      message: "",
     };
 
     if (!formData.name) {
-      newErrors.name = 'Name is required';
+      newErrors.name = "Name is required";
     }
 
     if (!formData.email) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!validateEmail(formData.email)) {
-      newErrors.email = 'Email is not valid';
+      newErrors.email = "Email is not valid";
     }
 
     if (!formData.message) {
-      newErrors.message = 'Message is required';
+      newErrors.message = "Message is required";
     }
 
     if (newErrors.name || newErrors.email || newErrors.message) {
@@ -65,20 +67,22 @@ const Contact = () => {
       return;
     }
 
-    setSubmitMessage('Confirm reCAPTCHA and return to original site');
+    setSubmitMessage("Confirm reCAPTCHA and return to original site");
 
-    const contactForm = document.getElementById('contactForm') as HTMLFormElement | null;
+    const contactForm = document.getElementById(
+      "contactForm"
+    ) as HTMLFormElement | null;
     if (contactForm) {
       contactForm.submit();
     }
   };
 
   const handleEmailCopy = () => {
-    const email = 'sahitoattique@gmail.com'; // Replace with your email
+    const email = "sahitoattique@gmail.com"; // Replace with your email
     navigator.clipboard.writeText(email).then(() => {
-      setCopySuccess('Email copied to clipboard!');
+      setCopySuccess("Email copied to clipboard!");
       setTimeout(() => {
-        setCopySuccess('');
+        setCopySuccess("");
       }, 2000);
     });
   };
@@ -88,12 +92,17 @@ const Contact = () => {
       <div className={stl.formSection}>
         <div className={stl.title}>CONTACT</div>
         <div className={stl.formContainer}>
-          <form id="contactForm" action="https://formsubmit.co/b8751cb9eddb5801f13b5a4f026969fc" method="POST" onSubmit={handleSubmit}>
+          <form
+            id="contactForm"
+            action="https://formsubmit.co/b8751cb9eddb5801f13b5a4f026969fc"
+            method="POST"
+            onSubmit={handleSubmit}
+          >
             <div>
               <input
                 type="text"
                 name="name"
-                placeholder='Your Name'
+                placeholder="Your Name"
                 id="name"
                 value={formData.name}
                 onChange={handleInputChange}
@@ -104,7 +113,7 @@ const Contact = () => {
               <input
                 type="email"
                 name="email"
-                placeholder='Your Email'
+                placeholder="Your Email"
                 id="email"
                 value={formData.email}
                 onChange={handleInputChange}
@@ -113,7 +122,7 @@ const Contact = () => {
             </div>
             <div>
               <textarea
-                placeholder='Your message'
+                placeholder="Your message"
                 id="message"
                 name="message"
                 value={formData.message}
@@ -123,26 +132,45 @@ const Contact = () => {
             </div>
             <button type="submit">Submit</button>
           </form>
-          {submitMessage && <p className={stl.submitMessage}>{submitMessage}</p>}
+          {submitMessage && (
+            <p className={stl.submitMessage}>{submitMessage}</p>
+          )}
         </div>
       </div>
 
       <div className={stl.linksSection}>
-        <div className={stl.title}>
-          M E
-        </div>
+        <div className={stl.title}>M E</div>
         <div className={stl.linksContainer}>
           <div className={stl.imageContainer}>
-            <img src={github} alt="" onClick={() => { window.location.href = 'https://github.com/bluseel'; }} />
+            <img
+              src={github}
+              alt=""
+              onClick={() => {
+                window.location.href = "https://github.com/bluseel";
+              }}
+            />
           </div>
-          <div className={stl.imageContainer} onClick={() => { window.location.href = 'https://www.linkedin.com/in/attique-sahito-208762304'; }}>
+          <div
+            className={stl.imageContainer}
+            onClick={() => {
+              window.location.href =
+                "https://www.linkedin.com/in/attique-sahito-208762304";
+            }}
+          >
             <img src={ln} alt="" />
           </div>
           <div className={stl.imageContainer} onClick={handleEmailCopy}>
-            <img src={gmail } alt="" />
+            <img src={gmail} alt="" />
           </div>
         </div>
         {copySuccess && <p className={stl.copySuccess}>{copySuccess}</p>}
+        <a
+          href="https://bluseel.com"
+          target="_blank"
+          className={stl.bluseelEndorsment}
+        >
+          Made by <span className={stl.bluseelStyle}> bluseel</span>{" "}
+        </a>
       </div>
     </div>
   );

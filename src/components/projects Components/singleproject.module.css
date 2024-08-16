@@ -10,10 +10,13 @@
   scroll-snap-type: x mandatory;
   scroll-snap-stop: always;
   position: relative;
+  z-index: 99999998999999;
 }
 
 
 .singleProjectContainer{
+  overflow-y: hidden;
+
   display: flex;
   flex-direction: row;
     width: 100vw;

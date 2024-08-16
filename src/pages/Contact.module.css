@@ -1,24 +1,21 @@
-.contactContainer{  
+.contactContainer {
   display: flex;
   text-align: center;
   min-width: 100vw;
 }
 
-
-
-.formSection{
+.formSection {
   flex: 3;
   padding: 50px;
   height: 100svh;
 
-  .title{   
+  .title {
     font-size: 5rem;
     font-weight: bold;
     margin-bottom: 0.4em;
     letter-spacing: 2rem;
   }
 }
-
 
 .formContainer {
   display: flex;
@@ -38,24 +35,17 @@
   border: 1px solid #ccc;
   box-sizing: border-box;
   outline: none;
-  
 }
-
-
-
-
 
 .formContainer textarea {
   resize: vertical;
   height: 23svh;
 }
 
-
-
 .formContainer button {
   padding: 0.3em 1em;
   background-color: black;
-  color: #FFFF3F;
+  color: #ffff3f;
   font-weight: 700;
   border: none;
   cursor: pointer;
@@ -73,59 +63,56 @@
   margin-top: 0.5em;
 }
 
-
-
-
 /* mbile for above */
 @media only screen and (max-width: 600px) {
-  .contactContainer{
+  .contactContainer {
     flex-direction: column;
-
   }
-  .formSection{
+  .formSection {
     min-height: 70vh;
 
     padding: 30px 20px;
 
-    .title{
+    .title {
       font-size: 3rem;
       letter-spacing: 0.5rem;
     }
   }
 
   .formContainer input,
-.formContainer textarea {
-  height: 6svh;
-  font-size: 1rem;
-  padding: 0.4em;
+  .formContainer textarea {
+    height: 6svh;
+    font-size: 1rem;
+    padding: 0.4em;
+  }
+
+  .formContainer textarea {
+    font-size: 1rem;
+    height: 20dvh;
+  }
+
+  .error {
+    color: red;
+    font-size: 0.875em;
+    margin-top: 0.2em;
+  }
 }
-
-.formContainer textarea{
-  font-size: 1rem;
-  height: 20dvh;
-}
-
-.error{
-  color: red;
-  font-size: 0.875em;
-  margin-top: 0.2em;
-
-}
-}
-
-
-
-
-
-
-
 
 /* -----------------------------  links part ----------------------------- */
+.bluseelEndorsment {
+  text-decoration: none;
+  color: inherit;
+  position: absolute;
+  bottom: 40px;
 
+  .bluseelStyle {
+    color: white;
+  }
+}
 
 .linksSection {
-  
-  color: #FFFF3F;
+  position: relative;
+  color: #ffff3f;
   background-color: black;
   flex: 1;
   padding: 50px;
@@ -136,31 +123,28 @@
   align-items: center;
   max-height: 100vh;
 
-
-  .title{   
+  .title {
     font-size: 5rem;
-    
+
     font-weight: bold;
   }
 
-
-  .linksContainer{
+  .linksContainer {
     display: flex;
     flex-wrap: wrap;
     width: 150px;
     justify-content: center;
     row-gap: 10px;
-
   }
 
   /* simple rounded image */
-  .imageContainer{
+  .imageContainer {
     display: flex;
     width: 100px;
-    
+
     align-items: center;
 
-    img{
+    img {
       width: 100%;
       height: 100%;
       object-fit: contain;
@@ -174,33 +158,27 @@
       cursor: pointer;
     }
   }
-
 }
 
 @media only screen and (max-width: 600px) {
-  .linksSection{
+  .linksSection {
     position: relative;
     padding: 20px;
     flex: 30vh;
-    .title{
+    .title {
       font-size: 3rem;
       margin-bottom: 20px;
     }
 
-    .linksContainer{
+    .linksContainer {
       flex-wrap: nowrap;
       column-gap: 10px;
-
     }
 
-    .imageContainer{
-      img{
+    .imageContainer {
+      img {
         width: 70px;
       }
     }
   }
 }
-
-
-
-
